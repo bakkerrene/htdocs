@@ -1,11 +1,19 @@
 <?php
-	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-		$uri = 'https://';
-	} else {
-		$uri = 'http://';
-	}
-	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/dashboard/');
-	exit;
+include("database.php");
+echo connect();
+session_start();
 ?>
-Something is wrong with the XAMPP installation :-(
+<html>
+<body>
+<head>
+	<title>H&M Weather Data</title>
+	<INPUT TYPE="button" value="test" class= "btn btn-primary" onClick="parent.location='index.php?content=test'">
+	<?php
+	$content = 'home';
+	if(isset($_GET['content'])){
+		$content = $_GET['content'];
+	} 
+	include("".$content .".php");
+?>
+</body>
+</html>
